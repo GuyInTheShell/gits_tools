@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'valueChange', text: string): void     // broadcasts the new value of the transformer
+  valueChange: [text: string]     // broadcasts the new value of the transformer
 }>()
 
 // Used to react to any change of the input to emit the output
