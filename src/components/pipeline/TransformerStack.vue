@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onBeforeMount, onBeforeUpdate, onUpdated, ref } from 'vue'
-import ToBase64 from './transformers/ToBase64.vue'
+import type { Component } from "vue";
 
 var stepValues = ref<any[]>([])
 
 const props = defineProps<{
-  input: string           // The input value to be converted through the chain
-  components: string[]    // The chain of transformation to apply to the input
+  input: string               // The input value to be converted through the chain
+  components: Component[]     // The chain of transformation to apply to the input
 }>()
 
 const emit = defineEmits<{
@@ -22,6 +22,7 @@ onBeforeMount(() => {
   for (let i = 0; i < props.components.length - 1; i++) {
     stepValues.value.push("")
   }
+  console.log(props.components.length)
 })
 
 onUpdated(() => {
@@ -32,8 +33,8 @@ onUpdated(() => {
 
 <template>
   <div class="stack">
-    <ToBase64 class="trans" v-for="idx in props.components.length" :input="stepValues[idx - 1]"
-      @value-change="value => stepValues[idx] = value" :key="idx" />
+    <component class="trans" v-for="idx in props.components.length + 1" :is="props.components[idx - 1]"
+      :input="stepValues[idx - 1]" @value-change="(value: any) => stepValues[idx] = value" :key="idx" />
     <div> {{ stepValues }} </div>
     <div hidden> foo </div>
   </div>
