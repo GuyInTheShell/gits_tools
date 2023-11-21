@@ -1,8 +1,10 @@
 <script setup lang="ts">
+
 const props = defineProps<{
   text?: string         // Text to display
   disabled?: boolean    // Whether the display is read-only
 }>()
+
 const emit = defineEmits<{
   (e: 'textChange', text: string): void     // broadcasts the new value of the Display component
 }>()

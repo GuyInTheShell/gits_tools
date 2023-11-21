@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Display from './Display.vue'
+import TransformerStack from './TransformerStack.vue'
 
 var input = ref("")
+var output = ref("")
 </script>
 
 <template>
   <div class="pipeline">
     <Display class="left" text="Your input here" @text-change="newtext => input = newtext" />
-    <div class="center">Center</div>
-    <Display class="right" :text="input" disabled />
+    <TransformerStack class="center" :input="input" :components="['a']" @done="value => output = value" />
+    <Display class="right" :text="output" disabled />
   </div>
 </template>
 
