@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Pipeline from './components/pipeline/Pipeline.vue'
 </script>
 
 <template>
@@ -13,9 +14,13 @@
       </nav>
 
       <main>
-        Main
+        <Pipeline />
       </main>
     </div>
+
+    <footer>
+      You did it!
+    </footer>
   </div>
 </template>
 
@@ -31,6 +36,12 @@
   >header {
     min-height: 75px;
     background: lightgray;
+    line-height: 1.5;
+  }
+
+  >footer {
+    min-height: 50px;
+    background: lightgreen;
     line-height: 1.5;
   }
 

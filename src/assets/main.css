@@ -4,8 +4,13 @@
   min-height: 100vh;
   font-weight: normal;
 
-  > header, main, footer, aside, nav {
+  > header, footer, aside, nav {
     padding: 1rem;
+  }
+
+  > main {
+    padding: 0;
+    margin: 0;
   }
 }
 
