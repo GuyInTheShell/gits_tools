@@ -9,9 +9,10 @@ var output = ref<string>("")
 
 <template>
   <div class="pipeline">
-    <Display class="left" text="Your input here" @text-change="newtext => input = newtext" />
-    <TransformerStack class="center" :input="input" :components="['a', 'b']" @done="value => output = value" />
-    <Display class="right" :text="output" disabled />
+    <Display class="input" text="Your input here" @text-change="newtext => input = newtext" />
+    <TransformerStack class="stack" :input="input" :components="['a', 'b']" @done="value => output = value" />
+    <Display class="output" :text="output" disabled />
+    <div class="library">Available transformers</div>
   </div>
 </template>
 
@@ -22,13 +23,20 @@ var output = ref<string>("")
   height: 100%;
 }
 
-.center {
-  flex-grow: 1;
+.stack {
+  min-width: 350px;
+  max-width: 350px;
 }
 
-.left,
-.right {
-  min-width: 250px;
+.library {
+  background-color: darkred;
+  min-width: 350px;
+  max-width: 350px;
+}
+
+.input,
+.output {
+  flex-grow: 1;
   background-color: cyan;
 }
 </style>
