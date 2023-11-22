@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import Display from './Display.vue'
 import TransformerStack from './TransformerStack.vue'
-import ToBase64 from './transformers/ToBase64.vue'
+import Library from './Library.vue'
 
 var input = ref<string>("")
 var output = ref<string>("")
@@ -11,10 +11,9 @@ var output = ref<string>("")
 <template>
   <div class="pipeline">
     <Display class="input" placeholder="Your input here" @text-change="newtext => input = newtext" />
-    <TransformerStack class="stack" :input="input" :components="[ToBase64, ToBase64, ToBase64]"
-      @done="value => output = value" />
+    <TransformerStack class="stack" :input="input" @done="value => output = value" />
     <Display class="output" placeholder="Output will be shown here" :text="output" disabled />
-    <div class="library">Available transformers</div>
+    <Library class="library" />
   </div>
 </template>
 
