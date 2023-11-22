@@ -15,7 +15,7 @@ const output = computed(() => {
   if (props.input === undefined || !props.input) {
     return ""
   }
-  var out = btoa(props.input);
+  var out = atob(props.input);
   emit('valueChange', out);
   return out;
 })
@@ -24,7 +24,7 @@ const output = computed(() => {
 
 <template>
   <div>
-    <p>To Base64 transformer </p>
+    <p>From Base64 transformer </p>
     <p>Input: {{ props.input }}</p>
     <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
     <p>Output: {{ output }}</p>

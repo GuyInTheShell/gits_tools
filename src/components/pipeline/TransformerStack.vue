@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onBeforeUpdate, onUpdated, ref } from 'vue'
+import { onBeforeMount, onBeforeUpdate, onUpdated, ref, shallowRef } from 'vue'
 import type { Component } from "vue"
 import draggable from 'vuedraggable'
 
@@ -14,8 +14,9 @@ const emit = defineEmits<{
   done: [value: string]
 }>()
 
-// The chain of transformation to apply to the input
-var components = ref<Component[]>([])
+// The chain of transformation to apply to the input. Don't try to have deep reactivity.
+// The components in the list are already reactive
+var components = shallowRef<Component[]>([])
 
 onBeforeUpdate(() => {
   stepValues.value[0] = props.input
@@ -34,7 +35,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <draggable v-model="components" :group="{ name: 'transformers' }">
+  <draggable v-model="components" :group="{ name: 'transformers' }" item-key="id">
     <template #item="{ element, index: idx }">
       <component class="trans" :is="element" :input="stepValues[idx]"
         @value-change="(value: any) => stepValues[idx + 1] = value" :key="idx" />
