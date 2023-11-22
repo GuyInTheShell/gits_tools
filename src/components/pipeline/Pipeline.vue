@@ -20,8 +20,8 @@ var output = ref<string>("")
 <style scoped>
 .pipeline {
   display: flex;
-  width: 100%;
   height: 100%;
+  flex-grow: 1;
 }
 
 .stack {

@@ -44,11 +44,6 @@ onUpdated(() => {
 </template>
 
 <style scoped>
-.stack {
-  display: flex;
-  flex-direction: column;
-}
-
 .trans {
   border-style: inset;
   border-width: 1px;

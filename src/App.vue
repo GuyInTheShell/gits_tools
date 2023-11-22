@@ -1,67 +1,39 @@
 <script setup lang="ts">
 import Pipeline from './components/pipeline/Pipeline.vue'
+
 </script>
 
 <template>
-  <div id="page">
-    <header>
-      You did it!
-    </header>
+  <v-app class="rounded rounded-md v-layout--full-width">
+    <v-app-bar title="GITS">
+      <template #image>
+        <v-img src="/logos/gits_256.png"></v-img>
+      </template>
+    </v-app-bar>
 
-    <div id="content">
-      <nav>
-        Menu
-      </nav>
+    <v-navigation-drawer>
+      <v-list>
+        <v-list-item title="Menu"></v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-      <main>
-        <Pipeline />
-      </main>
-    </div>
+    <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
+      <Pipeline />
+    </v-main>
 
-    <footer>
-      You did it!
-    </footer>
-  </div>
+    <v-footer class="bg-grey-lighten-1">
+      <v-row justify="center" no-gutters>
+        <v-col class="text-center" cols="12">
+          {{ new Date().getFullYear() }} — <strong>GITS</strong>
+        </v-col>
+      </v-row>
+    </v-footer>
+
+  </v-app>
 </template>
 
 <style scoped>
-#page {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  height: 100vh;
-  width: 100vw;
-
-  >header {
-    min-height: 75px;
-    background: lightgray;
-    line-height: 1.5;
-  }
-
-  >footer {
-    min-height: 50px;
-    background: lightgreen;
-    line-height: 1.5;
-  }
-
-  >#content {
-    flex-grow: 1;
-
-    display: flex;
-    flex-wrap: nowrap;
-
-    >nav {
-      background: lightblue;
-      width: 200px;
-    }
-
-    >main {
-      flex-grow: 1;
-
-      background: red;
-      width: 100px;
-    }
-  }
+.v-footer {
+  max-height: 55px;
 }
 </style>
