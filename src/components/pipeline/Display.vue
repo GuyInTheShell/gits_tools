@@ -2,6 +2,7 @@
 
 const props = defineProps<{
   text?: string         // Text to display
+  placeholder?: string  // Sample text when the display is empty
   disabled?: boolean    // Whether the display is read-only
 }>()
 
@@ -21,7 +22,7 @@ function onTextChange(event: Event): void {
 </script>
 
 <template>
-  <textarea :value="props.text" @input="onTextChange" :disabled="disabled" />
+  <textarea :placeholder="props.placeholder" :value="props.text" @input="onTextChange" :disabled="disabled" />
 </template>
 
 <style scoped></style>

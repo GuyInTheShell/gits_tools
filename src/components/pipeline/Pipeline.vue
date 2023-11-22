@@ -10,10 +10,10 @@ var output = ref<string>("")
 
 <template>
   <div class="pipeline">
-    <Display class="input" text="Your input here" @text-change="newtext => input = newtext" />
+    <Display class="input" placeholder="Your input here" @text-change="newtext => input = newtext" />
     <TransformerStack class="stack" :input="input" :components="[ToBase64, ToBase64, ToBase64]"
       @done="value => output = value" />
-    <Display class="output" :text="output" disabled />
+    <Display class="output" placeholder="Output will be shown here" :text="output" disabled />
     <div class="library">Available transformers</div>
   </div>
 </template>
