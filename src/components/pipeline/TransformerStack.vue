@@ -18,11 +18,9 @@ onBeforeUpdate(() => {
 })
 
 onBeforeMount(() => {
-  stepValues.value.push(props.input)
-  for (let i = 0; i < props.components.length - 1; i++) {
+  for (let i = 0; i < props.components.length; i++) {
     stepValues.value.push("")
   }
-  console.log(props.components.length)
 })
 
 onUpdated(() => {
@@ -35,8 +33,7 @@ onUpdated(() => {
   <div class="stack">
     <component class="trans" v-for="idx in props.components.length + 1" :is="props.components[idx - 1]"
       :input="stepValues[idx - 1]" @value-change="(value: any) => stepValues[idx] = value" :key="idx" />
-    <div> {{ stepValues }} </div>
-    <div hidden> foo </div>
+    <div class="debug"> {{ stepValues }} </div>
   </div>
 </template>
 
