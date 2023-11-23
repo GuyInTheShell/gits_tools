@@ -5,3 +5,7 @@
   width: 100%;
   font-weight: normal;
 }
+
+html {
+  overflow-y: auto !important;
+}

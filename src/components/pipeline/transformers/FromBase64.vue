@@ -23,12 +23,15 @@ const output = computed(() => {
 </script>
 
 <template>
-  <div>
-    <p>From Base64 transformer </p>
-    <p>Input: {{ props.input }}</p>
-    <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
-    <p>Output: {{ output }}</p>
-  </div>
+  <v-card color="#ECE3CE">
+    <v-card-title>From Base64</v-card-title>
+    <v-card-subtitle>str <v-icon icon="mdi-arrow-right" /> bin</v-card-subtitle>
+    <v-card-text v-if="props.input">
+      <p>Input: {{ props.input.substring(0, 10) }}...</p>
+      <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
+      <p>Output: {{ output.substring(0, 10) }}...</p>
+    </v-card-text>
+  </v-card>
 </template>
 
 <style scoped></style>

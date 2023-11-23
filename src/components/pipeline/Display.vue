@@ -22,7 +22,16 @@ function onTextChange(event: Event): void {
 </script>
 
 <template>
-  <textarea :placeholder="props.placeholder" :value="props.text" @input="onTextChange" :disabled="disabled" />
+  <textarea class="input" :placeholder="props.placeholder" :value="props.text" @input="onTextChange"
+    :disabled="disabled" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.input {
+  padding: 5px;
+}
+
+textarea:focus-visible {
+  outline: none;
+}
+</style>
