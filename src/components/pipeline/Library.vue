@@ -4,8 +4,10 @@ import draggable from 'vuedraggable'
 
 import ToBase64 from './transformers/ToBase64.vue'
 import FromBase64 from './transformers/FromBase64.vue'
+import ToHex from './transformers/ToHex.vue'
+import FromHex from './transformers/FromHex.vue'
 
-const components: Component[] = [ToBase64, FromBase64]
+const components: Component[] = [ToBase64, FromBase64, ToHex, FromHex]
 </script>
 
 <template>
