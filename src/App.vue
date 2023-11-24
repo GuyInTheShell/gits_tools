@@ -6,11 +6,11 @@ import Pipeline from './components/pipeline/Pipeline.vue'
 <template>
   <v-app class="rounded rounded-md v-layout--full-width">
     <v-app-bar color="blue-grey">
-      <div id="app-bar">
+      <div class="d-flex ga-6">
         <div>
           <img src="/logos/gits_transparent_256.png" class="logo" />
         </div>
-        <div id="brand">
+        <div id="brand" class="d-flex flex-row align-center">
           <p>Guy In The Shell</p>
         </div>
       </div>
@@ -20,13 +20,13 @@ import Pipeline from './components/pipeline/Pipeline.vue'
       <v-container>
         <v-row>
           <v-spacer />
-          <v-column>{{ new Date().getFullYear() }} — <strong>GITS</strong></v-column>
+          <v-col>{{ new Date().getFullYear() }} — <strong>GITS</strong></v-col>
           <v-spacer />
         </v-row>
       </v-container>
     </v-app-bar>
 
-    <v-main class="d-flex align-center justify-center ma-2" style="min-height: 300px;">
+    <v-main class="d-flex align-center justify-center ma-2">
       <Pipeline />
     </v-main>
 
@@ -43,20 +43,11 @@ img.logo {
   margin-left: 15px;
 }
 
-#app-bar {
-  display: flex;
-  gap: 25px;
-}
-
 #brand {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
   >p {
     color: #004b73;
     font-weight: 600;
-    font-size: 24pt;
+    font-size: 2.5rem;
   }
 }
 </style>
