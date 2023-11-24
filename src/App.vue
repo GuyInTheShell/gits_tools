@@ -5,10 +5,15 @@ import Pipeline from './components/pipeline/Pipeline.vue'
 
 <template>
   <v-app class="rounded rounded-md v-layout--full-width">
-    <v-app-bar title="GITS" color="blue-grey">
-      <template #image>
-        <v-img src="/logos/gits_256.png"></v-img>
-      </template>
+    <v-app-bar color="blue-grey">
+      <div id="app-bar">
+        <div>
+          <img src="/logos/gits_transparent_256.png" class="logo" />
+        </div>
+        <div id="brand">
+          <p>Guy In The Shell</p>
+        </div>
+      </div>
     </v-app-bar>
 
     <v-app-bar color="blue-grey" location="bottom">
@@ -31,5 +36,27 @@ import Pipeline from './components/pipeline/Pipeline.vue'
 <style scoped>
 .v-footer {
   max-height: 55px;
+}
+
+img.logo {
+  width: 70px;
+  margin-left: 15px;
+}
+
+#app-bar {
+  display: flex;
+  gap: 25px;
+}
+
+#brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  >p {
+    color: #004b73;
+    font-weight: 600;
+    font-size: 24pt;
+  }
 }
 </style>
