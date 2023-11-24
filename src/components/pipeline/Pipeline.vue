@@ -11,60 +11,40 @@ var output = ref<string>("")
 </script>
 
 <template>
-  <div class="pipeline">
-    <v-sheet class="input" elevation=10 rounded>
+  <v-container fluid class="pipeline d-flex flex-grow-1">
+    <v-sheet class="input pa-1 ma-4" elevation=10 rounded>
       <Display class="display" placeholder="Your input here" @text-change="newtext => input = newtext" />
     </v-sheet>
-    <div class="stack bg-blue-grey-lighten-5">
+    <v-sheet class="stack bg-blue-grey-lighten-5 flex-grow-1">
       <v-card color="#739072">
         <v-card-title>Processing pipeline</v-card-title>
       </v-card>
       <TransformerStack style="height: 100%;" :input="input" @done="value => output = value" />
-    </div>
-    <v-sheet class="output" elevation=10 rounded>
+    </v-sheet>
+    <v-sheet class="output pa-1 ma-4" elevation=10 rounded>
       <Display class="display" placeholder="Output will be shown here" :text="output" disabled />
     </v-sheet>
-    <div class="library bg-blue-grey-lighten-5">
+    <v-sheet class="library bg-blue-grey-lighten-5 flex-grow-1">
       <v-card color="#4F6F52">
         <v-card-title>Available transformers</v-card-title>
       </v-card>
       <Library class="bg-blue-grey-lighten-5" />
-    </div>
-  </div>
+    </v-sheet>
+  </v-container>
 </template>
 
 <style scoped>
 .pipeline {
-  display: flex;
   height: 100%;
-  flex-grow: 1;
 }
 
-.stack {
-  min-width: 350px;
-  flex-grow: 1;
-}
-
+.stack,
 .library {
   min-width: 350px;
-  flex-grow: 1;
 }
 
 .input,
 .output {
   flex-grow: 3;
-  padding: 5px;
-  margin: 15px;
-
-  >.display {
-    height: 100%;
-    width: 100%;
-  }
-}
-
-p.title {
-  padding: 5px;
-  color: #ECE3CE;
-  font-weight: 900;
 }
 </style>

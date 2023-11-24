@@ -35,7 +35,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <p v-if="components.length === 0" class="empty">No transformations</p>
+  <p v-if="components.length === 0" class="empty pa-1">No transformations</p>
   <draggable v-bind="$attrs" v-model="components" :group="{ name: 'transformers' }" item-key="id">
     <template #item="{ element, index: idx }">
       <component class="trans" :is="element" :input="stepValues[idx]"
@@ -51,7 +51,6 @@ onUpdated(() => {
 }
 
 p.empty {
-  padding: 5px;
   font-weight: 500;
   font-size: 2rem;
   text-align: center;
