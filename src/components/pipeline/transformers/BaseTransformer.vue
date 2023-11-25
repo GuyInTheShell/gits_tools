@@ -22,19 +22,52 @@ onBeforeUpdate(() => {
   if (props.input === undefined || !props.input) {
     return ""
   }
-  out = props.transform(props.input)
-  emit('valueChange', out);
+  out.value = props.transform(props.input)
+  emit('valueChange', out.value);
 })
+
+function inputDisplay() {
+  if (props.input && props.input.length > 10) {
+    return props.input.substring(0, 10) + "..."
+  } else {
+    return props.input
+  }
+}
+
+function outputDisplay() {
+  if (out.value && out.value.length > 10) {
+    return out.value.substring(0, 10) + "..."
+  } else {
+    return out.value
+  }
+}
 </script>
 
 <template>
   <v-card color="#ECE3CE">
     <v-card-title>{{ title }}</v-card-title>
     <v-card-subtitle>bin <v-icon icon="mdi-arrow-right" /> str</v-card-subtitle>
-    <v-card-text v-if="props.input">
-      <p>Input: {{ props.input.substring(0, 10) }}...</p>
-      <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
-      <p>Output: {{ out.substring(0, 10) }}...</p>
+    <v-card-text class="pa-0 mt-2">
+      <!-- the below section exists only if the component is used as part of the pipeline, and not in the library -->
+      <div v-if="props.input">
+        <v-expansion-panels variant="accordion">
+          <v-expansion-panel>
+            <template #title>Details</template>
+            <template #text>
+              <v-expansion-panels variant="accordion">
+                <v-expansion-panel>
+                  <template #title>Debug</template>
+                  <template #text>
+                    <p>Input: {{ inputDisplay() }}</p>
+                    <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
+                    <p>Output: {{ outputDisplay() }}</p>
+                  </template>
+                </v-expansion-panel>
+              </v-expansion-panels>
+            </template>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </div>
     </v-card-text>
   </v-card>
 </template>

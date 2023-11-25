@@ -17,7 +17,7 @@ function transform(payload: string): string {
 </script>
 
 <template>
-  <BaseTransformer :input="props.input" @value-change="(out) => emit('valueChange', out)" title="foobar"
+  <BaseTransformer :input="props.input" @value-change="(out) => emit('valueChange', out)" title="To Base64"
     :transform="transform" />
 </template>
 
