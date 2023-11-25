@@ -7,7 +7,12 @@ import FromBase64 from './transformers/FromBase64.vue'
 import ToHex from './transformers/ToHex.vue'
 import FromHex from './transformers/FromHex.vue'
 
-const components: Component[] = [ToBase64, FromBase64, ToHex, FromHex]
+// Attempt to use a factory to create the component.
+// Works, but most likely only for simple cases
+import { makeTransformer } from './transformers/TransformerFactory'
+const Test = makeTransformer("my transformer", (payload: string) => { return btoa(payload) })
+
+const components: Component[] = [Test, ToBase64, FromBase64, ToHex, FromHex]
 </script>
 
 <template>
