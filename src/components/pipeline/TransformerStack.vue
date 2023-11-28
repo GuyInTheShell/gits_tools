@@ -32,6 +32,10 @@ onUpdated(() => {
   emit('done', stepValues.value[stepValues.value.length - 1])
 })
 
+function onValueChange(idx: number, value: any) {
+  stepValues.value[idx + 1] = value
+}
+
 </script>
 
 <template>
@@ -39,7 +43,7 @@ onUpdated(() => {
   <draggable v-bind="$attrs" v-model="components" :group="{ name: 'transformers' }" item-key="id">
     <template #item="{ element, index: idx }">
       <component class="trans" :is="element" :input="stepValues[idx]"
-        @value-change="(value: any) => stepValues[idx + 1] = value" :key="idx" />
+        @value-change="(value: any) => onValueChange(idx, value)" :key="idx" />
     </template>
   </draggable>
 </template>

@@ -1,7 +1,7 @@
 <script>
 </script>
 <script setup lang="ts">
-import { ref, onBeforeUpdate } from 'vue'
+import { ref, onBeforeMount, onBeforeUpdate } from 'vue'
 
 const props = defineProps<{
   // Component setup
@@ -17,13 +17,21 @@ const emit = defineEmits<{
 
 let out = ref<string>("")
 
-// Reacts to input changes which is the only prop we expect to actually change
-onBeforeUpdate(() => {
+function processInput() {
   if (props.input === undefined || !props.input) {
-    return ""
+    return
   }
   out.value = props.transform(props.input)
   emit('valueChange', out.value);
+}
+
+// Reacts to input changes which is the only prop we expect to actually change
+onBeforeUpdate(() => {
+  processInput()
+})
+
+onBeforeMount(() => {
+  processInput()
 })
 
 function inputDisplay() {
