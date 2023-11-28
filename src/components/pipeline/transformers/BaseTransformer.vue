@@ -65,6 +65,14 @@ function outputDisplay() {
             </v-expansion-panel-title>
             <v-expansion-panel-text>
               <v-expansion-panels variant="accordion">
+                <v-expansion-panel v-if="$slots.config">
+                  <v-expansion-panel-title>
+                    Configuration
+                  </v-expansion-panel-title>
+                  <v-expansion-panel-text>
+                    <slot name="config"></slot>
+                  </v-expansion-panel-text>
+                </v-expansion-panel>
                 <v-expansion-panel>
                   <v-expansion-panel-title>
                     Debug
