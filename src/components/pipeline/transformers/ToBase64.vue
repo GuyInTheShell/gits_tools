@@ -10,8 +10,11 @@ const emit = defineEmits<{
   valueChange: [text: string]     // broadcasts the new value of the transformer
 }>()
 
+// https://web.dev/articles/base64-encoding
 function transform(payload: string): string {
-  return btoa(payload)
+  const bytes = new TextEncoder().encode(payload)
+  const binString = String.fromCodePoint(...bytes)
+  return btoa(binString)
 }
 
 </script>
