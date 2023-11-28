@@ -7,6 +7,7 @@ const props = defineProps<{
   // Component setup
   title: string
   transform: Function
+  forLibrary?: boolean  // Whether this is a read only display
   // Reactive transformer
   input?: string
 }>()
@@ -57,14 +58,14 @@ function outputDisplay() {
     <v-card-subtitle>bin <v-icon icon="mdi-arrow-right" /> str</v-card-subtitle>
     <v-card-text class="pa-0 mt-2">
       <!-- the below section exists only if the component is used as part of the pipeline, and not in the library -->
-      <div v-if="props.input">
+      <div v-if="!props.forLibrary">
         <v-expansion-panels variant="accordion">
           <v-expansion-panel>
             <v-expansion-panel-title>
               Details
             </v-expansion-panel-title>
             <v-expansion-panel-text>
-              <v-expansion-panels variant="accordion">
+              <v-expansion-panels variant="accordion" multiple>
                 <v-expansion-panel v-if="$slots.config">
                   <v-expansion-panel-title>
                     Configuration

@@ -18,7 +18,7 @@ const components: Component[] = [ToBase64, FromBase64, ToHex, FromHex]
 <template>
   <draggable v-model="components" :group="{ name: 'transformers', put: false, pull: 'clone' }" item-key="id">
     <template #item="{ element, index: idx }">
-      <component class="trans" :is="element" :key="idx" />
+      <component class="trans" :is="element" :key="idx" for-library />
     </template>
   </draggable>
 </template>
