@@ -52,19 +52,23 @@ function outputDisplay() {
       <div v-if="props.input">
         <v-expansion-panels variant="accordion">
           <v-expansion-panel>
-            <template #title>Details</template>
-            <template #text>
+            <v-expansion-panel-title>
+              Details
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
               <v-expansion-panels variant="accordion">
                 <v-expansion-panel>
-                  <template #title>Debug</template>
-                  <template #text>
+                  <v-expansion-panel-title>
+                    Debug
+                  </v-expansion-panel-title>
+                  <v-expansion-panel-text>
                     <p>Input: {{ inputDisplay() }}</p>
                     <!-- the computed property needs to be used if we want the emit it contains to be triggered -->
                     <p>Output: {{ outputDisplay() }}</p>
-                  </template>
+                  </v-expansion-panel-text>
                 </v-expansion-panel>
               </v-expansion-panels>
-            </template>
+            </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
       </div>
@@ -72,4 +76,13 @@ function outputDisplay() {
   </v-card>
 </template>
 
-<style scoped></style>
+<style scoped>
+.v-expansion-panel-title {
+  padding: 8px !important;
+  min-height: 0px !important;
+}
+
+:deep(.v-expansion-panel-text__wrapper) {
+  padding: 8px !important;
+}
+</style>
