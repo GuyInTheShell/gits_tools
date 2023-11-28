@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onBeforeUpdate, onUpdated, ref, shallowRef } from 'vue'
+import { onBeforeMount, onBeforeUpdate, ref, shallowRef } from 'vue'
 import type { Component } from "vue"
 import draggable from 'vuedraggable'
 
@@ -28,12 +28,12 @@ onBeforeMount(() => {
   }
 })
 
-onUpdated(() => {
-  emit('done', stepValues.value[stepValues.value.length - 1])
-})
-
 function onValueChange(idx: number, value: any) {
   stepValues.value[idx + 1] = value
+  // When the penultimate value changes (and impacts the last, then broadcast)
+  if (idx == stepValues.value.length - 2) {
+    emit('done', stepValues.value[stepValues.value.length - 1])
+  }
 }
 
 </script>
