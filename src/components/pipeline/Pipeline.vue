@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useCounterStore } from '@/stores/counter'
+import { useTodoStore } from '@/stores/todo'
 
 import Display from './Display.vue'
 import TransformerStack from './TransformerStack.vue'
 import Library from './Library.vue'
 
 const store = useCounterStore()
+const todoStore = useTodoStore()
 
 var input = ref<string>("")
 var output = ref<string>("")
@@ -17,7 +19,7 @@ var output = ref<string>("")
     <v-sheet class="input pa-1 ma-4" elevation=10 rounded>
       <Display class="display" placeholder="Your input here" @text-change="newtext => input = newtext" />
       <v-btn @click="store.increment">++</v-btn>
-      <v-btn>Load data</v-btn>
+      <v-btn @click="todoStore.load">Load data</v-btn>
     </v-sheet>
     <v-sheet class="stack bg-blue-grey-lighten-5 flex-grow-1">
       <v-card color="#739072">
