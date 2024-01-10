@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Pipeline from './components/pipeline/Pipeline.vue'
+import { RouterView, RouterLink } from 'vue-router'
 
 </script>
 
@@ -13,6 +13,12 @@ import Pipeline from './components/pipeline/Pipeline.vue'
           </v-col>
           <v-col>
             <p class="brand">Guy In The Shell</p>
+          </v-col>
+          <v-col>
+            <RouterLink :to="{ name: 'root' }">Main</RouterLink>
+          </v-col>
+          <v-col>
+            <RouterLink :to="{ name: 'about' }">About</RouterLink>
           </v-col>
         </v-row>
       </v-container>
@@ -29,7 +35,7 @@ import Pipeline from './components/pipeline/Pipeline.vue'
     </v-app-bar>
 
     <v-main class="d-flex align-center justify-center ma-2">
-      <Pipeline />
+      <RouterView></RouterView>
     </v-main>
 
   </v-app>
